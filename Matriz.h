@@ -18,6 +18,12 @@ class Matriz
 	Matriz(const Matriz &);		 // contrutor de copia
 	~Matriz();					 // detrutor
 
+	const int& getRows();
+	const int& getCols();
+    void unit();
+    void zeros();
+    void ones();
+
 	Matriz &operator+=(const Matriz &);			  // soma duas  matrizes por referncia
 	const Matriz operator+(const Matriz &) const; // soma duas matrizes
 	Matriz &operator-=(const Matriz &);			  // subtrai duas matrizes por referencia

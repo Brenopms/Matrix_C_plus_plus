@@ -5,20 +5,23 @@ using namespace std;
 int main() {
 	Matriz Y;
 	Matriz X(3,3,1);
-	//Matriz A(3,3,2);
-	Matriz C(3,2,1);
+	Matriz A(3,7,2);
+	Matriz C(3,3,2);
 	//A(3,3,2), C(3,3,1);
-	// Matriz W = C;
-	// Matriz Z(A);
+	Matriz W = C;
+	Matriz Z(A);
 
-	cout << X << endl;
-		//int numeroLinhas = A.getRows();
-	//int numeroColunas = A.getCols();
+	cout << A << "\n\nW =\n" << W << endl;
+    int numeroLinhas = A.getRows();
+	int numeroColunas = A.getCols();
+	cout << "\nlin: " << numeroLinhas << "\ncol: " << numeroColunas<< endl;
 	//Y.unit(); // inicializa Y com a matriz identidade
 	//A(2,1)=10; // altera o valor de uma posi��o de A
 	//Y.zeros(); // modifica todos os elementos de Y para o valor zero
-	//C=A+A; // Soma
-	//cout<< "C:\n"<< C<< endl;
+	//C+=C; // Soma
+	cout<< "C:\n"<< C<< endl;
+	C.ones();
+	cout<< "C:\n"<< C<< endl;
 	//C-=A; // Subtra��o
 	//cout<< "C:\n"<< C<< endl;
 	//A=C-A; // Subtra��o
@@ -39,4 +42,5 @@ int main() {
   //cout<<"2\n";
 	//cout<< "C:\n"<< C<< endl; // Impress�o de matrizes
   //cin>>Y; // leitura de dados para dentro da matriz Y
+  return 0;
 }

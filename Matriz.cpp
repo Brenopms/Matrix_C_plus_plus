@@ -34,6 +34,44 @@ Matriz::~Matriz()
 	delete[] valor;			// libera espa�o de memoria alocado
 }
 
+const int& Matriz::getRows(){
+    return linha;
+}
+
+const int& Matriz::getCols(){
+    return coluna;
+}
+
+void Matriz::unit(){
+    if(linha != coluna)
+        cout << "\nFormato invalido!\nA matriz identidade deve ter o mesmo numero de linhas e colunas." << endl;
+    else{
+        for (int i = 0; i < linha; i++)
+        {										// anda pela linha da matriz
+            for (int j = 0; j < coluna; j++)	// anda pela coluna da matriz
+                valor[i][j] = 0;
+
+            valor[i][i] = 1;
+        }
+    }
+}
+
+void Matriz::zeros(){
+    for (int i = 0; i < linha; i++)
+	{										// anda pela linha da matriz
+		for (int j = 0; j < coluna; j++)	// anda pela coluna da matriz
+			valor[i][j] = 0;
+	}
+}
+
+void Matriz::ones(){
+        for (int i = 0; i < linha; i++)
+	{										// anda pela linha da matriz
+		for (int j = 0; j < coluna; j++)	// anda pela coluna da matriz
+			valor[i][j] = 1;
+	}
+}
+
 ostream &operator<<(ostream &out, const Matriz &ref)
 {
 	for (int i = 0; i < ref.linha; i++)
@@ -61,7 +99,7 @@ Matriz &Matriz::operator+=(const Matriz &opr)
 {
 	if ((linha != opr.linha) || (coluna != opr.coluna))
 	{
-		cout << "impossive realizar essa operaoes\nas matrizes nao possuem a mesma dimensao" << endl;
+		cout << "impossivel realizar essa operacao\nAs matrizes nao possuem a mesma dimensao" << endl;
 		return *this;
 	}
 	for (int i = 0; i < linha; i++)

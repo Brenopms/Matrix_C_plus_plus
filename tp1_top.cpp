@@ -3,44 +3,49 @@
 using namespace std;
 
 int main() {
-	Matriz Y;
-	Matriz X(3,3,1);
-	Matriz A(3,7,2);
-	Matriz C(3,3,2);
-	//A(3,3,2), C(3,3,1);
-	Matriz W = C;
-	Matriz Z(A);
-
-	cout << A << "\n\nW =\n" << W << endl;
+    Matriz Y;
+    Matriz X(3,1), A(3,3,2), C(3,3,3);
+    Matriz W = C;
+    Matriz Z(A);
     int numeroLinhas = A.getRows();
-	int numeroColunas = A.getCols();
-	cout << "\nlin: " << numeroLinhas << "\ncol: " << numeroColunas<< endl;
-	//Y.unit(); // inicializa Y com a matriz identidade
-	//A(2,1)=10; // altera o valor de uma posi��o de A
-	//Y.zeros(); // modifica todos os elementos de Y para o valor zero
-	//C+=C; // Soma
+    int numeroColunas = A.getCols();
+    cout << "\nlin: " << numeroLinhas << "\ncol: " << numeroColunas<< endl;
+
 	cout<< "C:\n"<< C<< endl;
 	C.ones();
-	cout<< "C:\n"<< C<< endl;
-	//C-=A; // Subtra��o
-	//cout<< "C:\n"<< C<< endl;
-	//A=C-A; // Subtra��o
-	//cout<< "A:\n"<< A<< endl;
-	//A+=A; // Soma
-	//cout<< "A:\n"<< A<< endl;
-  //A=~Z; // A � igual a transposta de C
-  //cout<< "A:\n"<< A<< endl;
-	//X.ones(); // modifica todos os elementos de X com 1s
-	//X*=2; // multiplica��o por uma constante
-	//cout<< "X:\n"<< X<< endl;
-	//C=A*X; // multiplica��o de matrizes
-	//cout<< "C:\n"<< C<< endl;
-	//C*=X; // multiplica��o de matrizes
-  //if (A == C) // verifica a igualdade entre A e C
-	//cout<<"1\n";
-	//if(X != Y) // verifica a desigualdade entre A e C
-  //cout<<"2\n";
-	//cout<< "C:\n"<< C<< endl; // Impress�o de matrizes
-  //cin>>Y; // leitura de dados para dentro da matriz Y
+	cout<< "C.ones:\n"<< C<< endl;
+
+    A.zeros(); // modifica todos os elementos de Y para o valor zero
+    cout<< "A.zeros:\n"<< A<< endl;
+    A.unit(); 	  // inicializa Y com a matriz identidade
+    cout<< "A.unit:\n"<< A<< endl;
+    C-=A; 	  // Subtração
+    cout<< "C-=A:\n"<< C<< endl;
+    A+=A; 	  // Soma
+    cout<< "A+=A:\n"<< A<< endl;
+    cout<< "Z:\n"<< Z<< endl;
+    Z*=2; 	  // multiplicação por uma constante
+    cout<< "Z*=2:\n"<< Z<< endl;
+    C*=Z; 	  // multiplicação de matrizes
+    cout<< "C*=Z:\n"<< C<< endl;
+    Y=~X; 	  // A é igual a transposta de C
+    cout<< "Y=~X:\n"<< Y<< endl;
+    C=A+A;       // Soma
+    cout<< "C=A+A:\n"<< C<< endl;
+    A=C-A;	  // Subtração
+    cout<< "A=C-A:\n"<< A<< endl;
+    C=A*Z; 	  // multiplicação de matrizes
+    cout<< "C=A*Z:\n"<< C<< endl;
+    Matriz a(2,2,3), c(a);
+    if (a == c)  // verifica a igualdade entre A e C
+        cout << "As matrizes sao iguais" << endl;
+    if(a != c)   // verifica a desigualdade entre A e C
+            cout << "Erro!"<<endl;
+    a.ones();
+    if(a != c)   // verifica a desigualdade entre A e C
+        cout << "As matrizes sao diferentes" << endl;
+    if(a == c)   // verifica a desigualdade entre A e C
+            cout << "Erro!"<<endl;
+    //cin >> Y; 			// leitura de dados para dentro da matriz Y
   return 0;
 }

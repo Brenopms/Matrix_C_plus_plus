@@ -93,6 +93,7 @@ istream &operator>>(istream &in, Matriz &ref)
 			in >> ref.valor[i][j]; // atribui os valores arbritarios nos elemos da matriz
 		}
 	}
+	return in;
 }
 
 Matriz &Matriz::operator+=(const Matriz &opr)
@@ -174,13 +175,11 @@ Matriz &Matriz::operator*=(const double &n)
 const Matriz Matriz::operator~() const
 {
 	Matriz m(coluna, linha);
-	cout << m << endl;
 	for (int i = 0; i < m.linha; i++)
 	{
 		for (int j = 0; j < m.coluna; j++)
 			m.valor[i][j] = valor[j][i]; // copia os valores  traspostas para a nova matriz
 	}
-	cout << m << endl;
 	return m;
 }
 

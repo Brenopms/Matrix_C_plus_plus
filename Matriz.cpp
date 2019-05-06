@@ -1,5 +1,10 @@
 #include "Matriz.h"
 
+/*Construtor da classe, chamado por Matriz X(3,3,1),
+ onde o primeiro valor e o numero de linhas,
+ o segundo e numero de colunas
+ e o terceiro e o valor de cada elemento
+*/
 Matriz::Matriz(int l, int c,
 			   const double &v)
 {
@@ -14,6 +19,7 @@ Matriz::Matriz(int l, int c,
 	}
 }
 
+// Construtor da classe que recebe uma matriz por referencia e faz uma copia de seus valores
 Matriz::Matriz(const Matriz &m)
 {
 	coluna = m.coluna;
@@ -28,20 +34,24 @@ Matriz::Matriz(const Matriz &m)
 	}
 }
 
+//Destrutor da classe. Libera o espaco alocado da matriz
 Matriz::~Matriz()
 {
 	delete[] valor[coluna]; // libera espa�o de memoria alocado
 	delete[] valor;			// libera espa�o de memoria alocado
 }
 
+//Retorna  o numero de linhas da matriz
 const int& Matriz::getRows(){
     return linha;
 }
 
+//Retorna  o numero de colunas da matriz
 const int& Matriz::getCols(){
     return coluna;
 }
 
+//Faz com que a matriz seja igual uma matriz identidade
 void Matriz::unit(){
     if(linha != coluna)
         cout << "\nFormato invalido!\nA matriz identidade deve ter o mesmo numero de linhas e colunas." << endl;
@@ -56,6 +66,7 @@ void Matriz::unit(){
     }
 }
 
+//Substitui todos os valores da matriz por zero
 void Matriz::zeros(){
     for (int i = 0; i < linha; i++)
 	{										// anda pela linha da matriz
@@ -64,14 +75,16 @@ void Matriz::zeros(){
 	}
 }
 
+//Substitui todos os valores da matriz por 1
 void Matriz::ones(){
-        for (int i = 0; i < linha; i++)
+    for (int i = 0; i < linha; i++)
 	{										// anda pela linha da matriz
 		for (int j = 0; j < coluna; j++)	// anda pela coluna da matriz
 			valor[i][j] = 1;
 	}
 }
 
+//Sobrecarga do operador de saida, fazendo com que a matriz seja impressa formatada na tela
 ostream &operator<<(ostream &out, const Matriz &ref)
 {
 	for (int i = 0; i < ref.linha; i++)
@@ -83,6 +96,7 @@ ostream &operator<<(ostream &out, const Matriz &ref)
 	return out;
 }
 
+//Sobrecarga do operador de entrada, substituindo os valores da matriz
 istream &operator>>(istream &in, Matriz &ref)
 {
 	for (int i = 0; i < ref.linha; i++)
@@ -96,6 +110,7 @@ istream &operator>>(istream &in, Matriz &ref)
 	return in;
 }
 
+//Sobrecarga do operador de +=, fazendo com o que os valores da matriz sejam somados e igualados
 Matriz &Matriz::operator+=(const Matriz &opr)
 {
 	if ((linha != opr.linha) || (coluna != opr.coluna))
@@ -111,6 +126,7 @@ Matriz &Matriz::operator+=(const Matriz &opr)
 	return *this;
 }
 
+// Sobrecarga do operador de soma, fazendo com o que o a soma ocorra em cada uma das posicoes da matriz
 const Matriz Matriz::operator+(const Matriz &opr) const
 {
 	Matriz m(*this);
@@ -118,6 +134,7 @@ const Matriz Matriz::operator+(const Matriz &opr) const
 	return m;
 }
 
+//Sobrecarga do operador de -=, fazendo com que os valores da matriz sejam subtraidos e igualados
 Matriz &Matriz::operator-=(const Matriz &opr)
 {
 	for (int i = 0; i < linha; i++)
@@ -128,6 +145,7 @@ Matriz &Matriz::operator-=(const Matriz &opr)
 	return *this;
 }
 
+//Sobrecarga do operador de subtracao, fazendo com o que o a subtracao ocorra em cada uma das posicoes da matriz
 const Matriz Matriz::operator-(const Matriz &opr) const
 {
 	Matriz m(*this);
@@ -135,6 +153,7 @@ const Matriz Matriz::operator-(const Matriz &opr) const
 	return m;
 }
 
+//Sobrecarga do operador de *=, fazendo com que ocorra uma multiplicacao de matrizes 
 Matriz &Matriz::operator*=(const Matriz &opr)
 {
 	Matriz aux(linha, opr.coluna, 0);
@@ -155,6 +174,7 @@ Matriz &Matriz::operator*=(const Matriz &opr)
 	return *this;
 }
 
+//Sobrecarga do operador de subtracao, fazendo com o que o a multiplicacao ocorra em cada uma das posicoes da matriz
 const Matriz Matriz::operator*(const Matriz &opr) const
 {
 	Matriz m(*this);
@@ -162,6 +182,7 @@ const Matriz Matriz::operator*(const Matriz &opr) const
 	return m;
 }
 
+//Sobrecarga  do operador *=, que permite a multiplicacao de todos os valores da matriz por uma constante
 Matriz &Matriz::operator*=(const double &n)
 {
 	for (int i = 0; i < linha; i++)
@@ -172,6 +193,7 @@ Matriz &Matriz::operator*=(const double &n)
 	return *this;
 }
 
+// Operador para realizar a transposicao das matrizes
 const Matriz Matriz::operator~() const
 {
 	Matriz m(coluna, linha);
@@ -183,6 +205,7 @@ const Matriz Matriz::operator~() const
 	return m;
 }
 
+//Sobrecarga do operador de igualdade, checando a igualdade de cada um dos elementos das duas matrizes
 const bool Matriz::operator==(const Matriz &ref) const
 {
 	if ((linha != ref.linha) || (coluna != ref.coluna))
@@ -198,6 +221,7 @@ const bool Matriz::operator==(const Matriz &ref) const
 	return true;
 }
 
+//Sobrecarga do operador de diferenca, checando a igualdade de cada um dos elementos das duas matrizes
 const bool Matriz::operator!=(const Matriz &ref) const
 {
 	if ((linha != ref.linha) || (coluna != ref.coluna))

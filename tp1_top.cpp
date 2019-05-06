@@ -10,10 +10,15 @@ int main() {
     int numeroLinhas = A.getRows();
     int numeroColunas = A.getCols();
     cout << "\nlin: " << numeroLinhas << "\ncol: " << numeroColunas<< endl;
+		cout<< "C:\n"<< C<< endl;
 
-	cout<< "C:\n"<< C<< endl;
-	C.ones();
-	cout<< "C.ones:\n"<< C<< endl;
+		cout<< "C(2,2) = "<< C.getValue(2,2) << endl;
+
+		C.setValue(2, 2, 0);
+		cout<< "C(2,2) = 0:\n"<< C << endl;
+
+		C.ones();
+		cout<< "C.ones:\n"<< C<< endl;
 
     A.zeros(); // modifica todos os elementos de Y para o valor zero
     cout<< "A.zeros:\n"<< A<< endl;

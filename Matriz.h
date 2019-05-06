@@ -20,9 +20,11 @@ class Matriz
 
 	const int& getRows();
 	const int& getCols();
-    void unit();
-    void zeros();
-    void ones();
+	void setValue(int l, int c, const double &v);
+	double getValue(int l, int c);
+  void unit();
+  void zeros();
+  void ones();
 
 	Matriz &operator+=(const Matriz &);			  // soma duas  matrizes por referncia
 	const Matriz operator+(const Matriz &) const; // soma duas matrizes

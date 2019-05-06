@@ -66,6 +66,28 @@ void Matriz::unit(){
     }
 }
 
+
+//Seta o valor[l-1][c-1] para v
+void Matriz::setValue(int l, int c, const double &v){
+    if(linha - 1  < 0 ||  coluna - 1  < 0) 
+        cout << "\nFormato invalido!\nOs valores escolhidos devem estar dentro do limite da Matriz" << endl;
+    else {
+		valor[l-1][c-1] = v;
+    }
+}
+
+//Pega  o valor[l-1][c-1]
+double Matriz::getValue(int l, int c){
+    if(linha - 1  < 0 ||  coluna - 1  < 0) {
+		cout << "\nFormato invalido!\nOs valores escolhidos devem estar dentro do limite da Matriz" << endl;
+		return -1;
+	}
+    else {
+		return valor[l-1][c-1];
+    }
+}
+
+
 //Substitui todos os valores da matriz por zero
 void Matriz::zeros(){
     for (int i = 0; i < linha; i++)
